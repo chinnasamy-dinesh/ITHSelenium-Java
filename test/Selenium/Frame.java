@@ -1,17 +1,17 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.Select;
-
 import java.util.Scanner;
 
 public class Frame
 {
     static RemoteWebDriver driver;
+
     public static void main(String[] args) throws InterruptedException
     {
         System.out.print("\n1 - Chrome, 2 - Firefox, 3 - Edge, 4 - Safari \nPlease select a option 1 to 4 driver to perform automation:");
@@ -21,7 +21,9 @@ public class Frame
 
         if (selectBrowser == 1)
         {
-            driver = new ChromeDriver();
+            ChromeOptions option = new ChromeOptions();
+            option.addArguments("--remote-allow-origins=*");
+            driver = new ChromeDriver(option);
         }
         else if (selectBrowser == 2)
         {
@@ -36,8 +38,10 @@ public class Frame
             driver = new SafariDriver();
         }
 
-        BrowserCommands obj = new BrowserCommands();
-        obj.code();
+        Frame obj = new Frame();
+        obj.frameCode();
+
+        driver.close();
     }
 
     public void frameCode() throws InterruptedException
