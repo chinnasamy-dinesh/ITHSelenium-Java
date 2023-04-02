@@ -63,9 +63,6 @@ public class BrowserCommands
         String title = driver.getTitle();
         System.out.println("Page Title: "+title);
 
-//        String  source = driver.getPageSource();
-//        System.out.println("Page Source: "+source);
-
         String session = String.valueOf(driver.getSessionId());
         System.out.println("Session ID: "+session);
 
