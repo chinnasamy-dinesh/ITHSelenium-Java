@@ -1,3 +1,4 @@
+import io.cucumber.plugin.event.Node;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -62,6 +63,8 @@ public class BrowserCommands
 
         String title = driver.getTitle();
         System.out.println("Page Title: "+title);
+
+        System.out.println("Amend Commit in GITHUB");
 
         String session = String.valueOf(driver.getSessionId());
         System.out.println("Session ID: "+session);
