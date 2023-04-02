@@ -1,6 +1,5 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -21,7 +20,9 @@ public class BrowserCommands
 
         if(selectBrowser==1)
         {
-        driver =  new ChromeDriver();
+            ChromeOptions option = new ChromeOptions();
+            option.addArguments("--remote-allow-origins=*");
+            driver = new ChromeDriver(option);
         }
         else if(selectBrowser==2)
         {
@@ -46,27 +47,27 @@ public class BrowserCommands
     public void code() throws InterruptedException
     {
 
-    driver.manage().window().maximize();
+        driver.manage().window().maximize();
 
-    driver.get("https://jqueryui.com/checkboxradio/");
-    Thread.sleep(2000);
+        driver.get("https://jqueryui.com/checkboxradio/");
+        Thread.sleep(2000);
 
-    driver.navigate().back();
-    Thread.sleep(2000);
+        driver.navigate().back();
+        Thread.sleep(2000);
 
-    driver.navigate().forward();
+        driver.navigate().forward();
 
-    String url = driver.getCurrentUrl();
-    System.out.println("Current URL: "+url);
+        String url = driver.getCurrentUrl();
+        System.out.println("Current URL: "+url);
 
-    String title = driver.getTitle();
-    System.out.println("Page Title: "+title);
+        String title = driver.getTitle();
+        System.out.println("Page Title: "+title);
 
-    String  source = driver.getPageSource();
-    System.out.println("Page Source: "+source);
+//        String  source = driver.getPageSource();
+//        System.out.println("Page Source: "+source);
 
-    String session = String.valueOf(driver.getSessionId());
-    System.out.println("Session ID: "+session);
+        String session = String.valueOf(driver.getSessionId());
+        System.out.println("Session ID: "+session);
 
     }
 
